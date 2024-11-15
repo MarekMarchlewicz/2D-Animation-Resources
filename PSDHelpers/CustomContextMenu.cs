@@ -28,7 +28,8 @@ namespace PSDHelpers
             if (generatedLibrary == null)
                 return;
             var savePath = AssetDatabase.GenerateUniqueAssetPath(Path.ChangeExtension(importer.assetPath, ".spriteLib"));
-            generatedLibrary.SaveAsSourceAsset(savePath);
+            var path = generatedLibrary.SaveAsSourceAsset(savePath);
+            AssetDatabase.ImportAsset(path);
         }
 
         [MenuItem("Assets/PSD/Convert Groups To Categories", true)]
@@ -55,7 +56,8 @@ namespace PSDHelpers
             var generatedLibrary = SpriteLibraryGenerator.ConvertLayersToCategories(importer, sprites);
 
             var savePath = AssetDatabase.GenerateUniqueAssetPath(Path.ChangeExtension(importer.assetPath, ".spriteLib"));
-            generatedLibrary.SaveAsSourceAsset(savePath);
+            var path = generatedLibrary.SaveAsSourceAsset(savePath);
+            AssetDatabase.ImportAsset(path);
         }
 
         [MenuItem("Assets/PSD/Convert Layers To Categories", true)]
